@@ -39,6 +39,18 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000). Marketing routes: `/`, `/products`, `/how-it-works`, `/pricing`, `/about`, `/contact`. The contact form posts to `POST /api/quote`; without `DATABASE_URL`, requests are logged to the server console only.
 
+## Deploy on Vercel
+
+The Next.js app lives in **`web/`**. If Vercel’s **Root Directory** is left at the repository root, installs/builds may not run the Next app correctly and you can see **`404 NOT_FOUND`** (or an empty deployment) at your `.vercel.app` URL.
+
+1. Open the project on [Vercel](https://vercel.com) → **Settings** → **General**.
+2. Under **Root Directory**, click **Edit**, set it to **`web`**, and save.
+3. **Deployments** → open the latest deployment → **⋯** → **Redeploy** (clear build cache if redeploy still fails).
+
+Optional environment variables (Production / Preview):
+
+- **`NEXT_PUBLIC_SITE_URL`** — your live URL, e.g. `https://your-project.vercel.app` (used for metadata).
+
 ## Documentation only
 
 Open the files in **Documentation in this repo** in order: brief → requirements → design → user stories → page content.
