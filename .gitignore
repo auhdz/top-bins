@@ -1,13 +1,16 @@
 .DS_Store
 *.log
 
-# Next.js app
-web/node_modules/
-web/.next/
-web/out/
-web/.env
-web/.env.local
-web/.env.*.local
-!web/.env.example
-web/*.tsbuildinfo
-web/next-env.d.ts
+# Next.js (app is at repository root)
+node_modules/
+.next/
+out/
+.env
+.env.local
+.env.*.local
+!.env.example
+*.tsbuildinfo
+next-env.d.ts
+
+# vercel
+.vercel

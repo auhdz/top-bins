@@ -2,7 +2,7 @@
 
 GitHub: [github.com/auhdz/top-bins](https://github.com/auhdz/top-bins) (repository name `top-bins`; GitHub does not allow spaces in repo URLs).
 
-**Top Bins** is the brand and repository for a storage bin and crate rental business: heavy-duty plastic bins and containers for moving, storage, job sites, events, and equipment protection. This repository holds product documentation, design guidelines, and a **working Next.js app** under [`web/`](./web/).
+**Top Bins** is the brand and repository for a storage bin and crate rental business: heavy-duty plastic bins and containers for moving, storage, job sites, events, and equipment protection. This repository includes product documentation, design guidelines, and a **Next.js app at the repository root** (no `web/` subfolder—Vercel builds the default directory).
 
 ## Recommended tech stack
 
@@ -26,10 +26,11 @@ GitHub: [github.com/auhdz/top-bins](https://github.com/auhdz/top-bins) (reposito
 - [`docs/design-guidelines.md`](./docs/design-guidelines.md) — Visual direction (industrial, charcoal + yellow)
 - [`content/pages/`](./content/pages/) — Page/section copy and structure (Markdown; migrate into React/MDX later)
 
-## Run the website (`web/`)
+## Run the website (local)
+
+From the repository root:
 
 ```bash
-cd web
 npm install
 cp .env.example .env.local
 # Optional: set DATABASE_URL, then:
@@ -41,11 +42,9 @@ Open [http://localhost:3000](http://localhost:3000). Marketing routes: `/`, `/pr
 
 ## Deploy on Vercel
 
-The Next.js app lives in **`web/`**. If Vercel’s **Root Directory** is left at the repository root, installs/builds may not run the Next app correctly and you can see **`404 NOT_FOUND`** (or an empty deployment) at your `.vercel.app` URL.
+The Next.js app is at the **repository root** (`package.json` next to `src/`), so you **do not** need to set **Root Directory** in Vercel. Connect the repo, use the default **Framework Preset: Next.js**, and deploy.
 
-1. Open the project on [Vercel](https://vercel.com) → **Settings** → **General**.
-2. Under **Root Directory**, click **Edit**, set it to **`web`**, and save.
-3. **Deployments** → open the latest deployment → **⋯** → **Redeploy** (clear build cache if redeploy still fails).
+If an older Vercel project still had **Root Directory** set to `web`, remove it (clear the field or set to `.`) and redeploy.
 
 Optional environment variables (Production / Preview):
 
@@ -57,7 +56,7 @@ Open the files in **Documentation in this repo** in order: brief → requirement
 
 ## Database (optional)
 
-Point `DATABASE_URL` at PostgreSQL, then from `web/`:
+Point `DATABASE_URL` at PostgreSQL, then from the repo root:
 
 ```bash
 npx prisma migrate dev --name init
@@ -65,23 +64,19 @@ npx prisma migrate dev --name init
 
 This creates `QuoteRequest` (and `Product`) tables from `prisma/schema.prisma`. Wire Stripe keys in `.env.local` when you add checkout (never commit secrets).
 
-## Suggested frontend folder structure (after `web/` is created)
+## Frontend folder structure
 
 ```
-web/
 ├── src/
-│   ├── app/                    # App Router: layout, pages, route handlers
-│   │   ├── (marketing)/        # Public site routes
-│   │   ├── (dashboard)/        # Customer area
-│   │   └── api/                # Webhooks, booking APIs
+│   ├── app/                 # App Router: layout, pages, route handlers
 │   ├── components/
-│   │   ├── ui/                 # shadcn primitives
-│   │   └── marketing/          # Hero, sections, CTAs
-│   ├── lib/                    # db, stripe, utils
-│   └── styles/
+│   │   ├── ui/              # shadcn primitives
+│   │   └── marketing/       # Hero, sections, CTAs
+│   └── lib/                 # db, utils, site config
 ├── prisma/
-├── public/                     # Optimized images (bins, icons)
-└── package.json
+├── public/
+├── package.json
+└── next.config.ts
 ```
 
 ## License
