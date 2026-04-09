@@ -1,6 +1,6 @@
 export const site = {
   name: "Top Bins",
-  tagline: "Heavy-duty bin & crate rental",
+  tagline: "Professional moving bins rental service",
   description:
     "Rent stackable commercial-grade plastic storage bins and crates for moving, job sites, events, and on-site organization—with delivery and pickup.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
