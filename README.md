@@ -1,5 +1,7 @@
 # Top Bins
 
+GitHub: [github.com/auhdz/top-bins](https://github.com/auhdz/top-bins) (repository name `top-bins`; GitHub does not allow spaces in repo URLs).
+
 **Top Bins** is the brand and repository for a storage bin and crate rental business: heavy-duty plastic bins and containers for moving, storage, job sites, events, and equipment protection. This repository holds product documentation, design guidelines, and a **working Next.js app** under [`web/`](./web/).
 
 ## Recommended tech stack
