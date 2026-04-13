@@ -1,11 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 
+import { HeroCarouselBg } from "@/components/marketing/hero-carousel-bg";
 import { payNowLinkProps, site } from "@/lib/site";
 import { cn } from "@/lib/utils";
-
-/** Local hero art: delivery van & bins; text sits on left scrim */
-const HERO_IMAGE = "/images/hero-packing-crates.png";
 
 const primaryCta = cn(
   "hero-cta bg-primary text-primary-foreground shadow-md shadow-black/30",
@@ -26,22 +23,15 @@ export function Hero() {
     <section
       className="relative isolate -mt-[var(--site-header-offset)] flex min-h-[75dvh] flex-col overflow-hidden border-b border-border/40 pt-[var(--site-header-offset)]"
     >
-      <Image
-        src={HERO_IMAGE}
-        alt="Delivery professional loading a heavy-duty plastic moving bin from a yellow van."
-        fill
-        priority
-        className="object-cover object-[58%_center] sm:object-[55%_center] lg:object-center"
-        sizes="100vw"
-      />
+      <HeroCarouselBg />
 
-      {/* Overlay: dark left panel so headline reads on bright street; fades to reveal van & bins */}
+      {/* Overlay: dark left panel so headline reads on bright areas */}
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-zinc-950/95 from-[-10%] via-zinc-950/72 via-[38%] to-zinc-950/25 to-[78%] to-transparent"
+        className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-r from-zinc-950/95 from-[-10%] via-zinc-950/72 via-[38%] to-zinc-950/25 to-[78%] to-transparent"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-zinc-950/55 via-transparent to-zinc-950/25 sm:from-zinc-950/40 sm:to-transparent"
+        className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-zinc-950/55 via-transparent to-zinc-950/25 sm:from-zinc-950/40 sm:to-transparent"
         aria-hidden
       />
 

@@ -46,7 +46,7 @@ export function CheckoutSection() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mx-auto max-w-3xl text-center">
           <p className="landing-fade-up landing-delay-11 text-[11px] font-medium uppercase tracking-[0.22em] text-muted-foreground">
-            Pricing &amp; rent
+            Pricing
           </p>
           <h2 className="landing-fade-up landing-delay-11 mt-5 font-heading text-3xl font-medium leading-[1.15] tracking-tight text-foreground sm:mt-6 sm:text-4xl lg:text-[2.65rem]">
             Weekly subscriptions in Koreatown
