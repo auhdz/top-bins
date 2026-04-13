@@ -6,8 +6,8 @@ import { cn } from "@/lib/utils";
 
 const primaryCta = cn(
   "hero-cta bg-primary text-primary-foreground shadow-md shadow-black/30",
-  "motion-safe:hover:shadow-lg motion-safe:hover:shadow-[0_8px_32px_oklch(0.72_0.14_96_/_0.42)]",
-  "motion-safe:active:shadow-[0_0_28px_oklch(0.78_0.17_96_/_0.58)]",
+  "motion-safe:hover:shadow-lg motion-safe:hover:shadow-[0_6px_28px_rgba(253,224,71,0.42)]",
+  "motion-safe:active:shadow-[0_0_26px_rgba(253,224,71,0.55)]",
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
 );
 
