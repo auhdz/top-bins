@@ -37,10 +37,10 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-4 py-12 sm:px-6 sm:py-16">
         <div className="max-w-xl">
-          <p className="landing-fade-up landing-delay-1 text-sm font-medium text-zinc-300">
+          <p className="landing-fade-up landing-delay-1 text-[11px] font-medium uppercase tracking-[0.22em] text-zinc-400">
             {site.serviceArea}
           </p>
-          <h1 className="landing-fade-up landing-delay-2 mt-3 font-sans text-[2rem] font-semibold leading-[1.08] tracking-[-0.03em] text-white sm:text-5xl sm:leading-[1.05] lg:text-[3.25rem]">
+          <h1 className="landing-fade-up landing-delay-2 mt-5 font-heading text-3xl font-medium leading-[1.15] tracking-tight text-white sm:mt-6 sm:text-4xl lg:text-[2.65rem]">
             Moving bins delivered.
             <br />
             Picked up when you&apos;re done.
