@@ -1,4 +1,4 @@
-# How It Works — concept & copy structure
+# How It Works: concept & copy structure
 
 **Route (future):** `/how-it-works`  
 **Goal:** Remove uncertainty about delivery, rental period, and pickup.
@@ -11,7 +11,7 @@
 
 ---
 
-## Step 1 — Schedule delivery
+## Step 1: Schedule delivery
 
 Tell us how many bins or crates you need, your address, and preferred delivery window. We confirm availability and send an order summary. For larger or commercial jobs, we may coordinate by phone or email.
 
@@ -19,7 +19,7 @@ Tell us how many bins or crates you need, your address, and preferred delivery w
 
 ---
 
-## Step 2 — Pack and use
+## Step 2: Pack and use
 
 Fill your bins at your pace within the rental period. Stack them safely; keep weight within limits marked on the product page and in your confirmation email. Add locks or padding if you selected them.
 
@@ -30,17 +30,17 @@ Fill your bins at your pace within the rental period. Stack them safely; keep we
 
 ---
 
-## Step 3 — We pick up
+## Step 3: We pick up
 
 On your scheduled pickup date (or extended period if arranged), we retrieve the empty bins from the agreed location. We inspect counts against your order; any damage or loss terms are spelled out in your rental agreement.
 
-**Extensions:** If you need more time, contact us before your pickup window—subject to availability and prorated fees.
+**Extensions:** If you need more time, contact us before your pickup window: subject to availability and prorated fees.
 
 ---
 
 ## Service area
 
-**Placeholder:** We currently serve [regions / radius / zip list]. Expanding soon—join the waitlist [link] if outside the zone.
+**Placeholder:** We currently serve [regions / radius / zip list]. Expanding soon: join the waitlist [link] if outside the zone.
 
 ---
 

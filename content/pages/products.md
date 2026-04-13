@@ -1,4 +1,4 @@
-# Products / Inventory — concept & copy structure
+# Products / Inventory: concept & copy structure
 
 **Route (future):** `/products`  
 **Goal:** Help visitors compare sizes, understand features, and move toward booking.
@@ -9,16 +9,16 @@
 
 **Headline:** Bins and crates built for real work.
 
-**Intro copy:** Choose from multiple rental sizes—each unit is stackable, with secure lids on select models, and designed for repeated use. Need pads, locks, or cleaning supplies? Add them at checkout or ask when you request a quote.
+**Intro copy:** Choose from multiple rental sizes: each unit is stackable, with secure lids on select models, and designed for repeated use. Need pads, locks, or cleaning supplies? Add them at checkout or ask when you request a quote.
 
 ---
 
-## Product grid (example tiers — adjust to real SKUs)
+## Product grid (example tiers: adjust to real SKUs)
 
 ### Standard bin
 
 - **Best for:** Clothes, garage items, office papers, everyday moving boxes replacement.
-- **Approx. dimensions:** [L × W × H] — *replace with real specs*
+- **Approx. dimensions:** [L × W × H]: *replace with real specs*
 - **Capacity:** [volume or rough “equivalent boxes”]
 - **Features:** Stackable, integrated handles, yellow lid [if applicable]
 - **From:** $[X] / week + delivery
@@ -51,9 +51,9 @@
 
 ## Accessories
 
-- **Padding / blankets** — Protect furniture and fragile items.
-- **Locks** — Compatible with hasp or latch styles you offer.
-- **Cleaning supplies** — Kits with spray, cloths, sponges for move-out or job-site cleanup.
+- **Padding / blankets**: Protect furniture and fragile items.
+- **Locks**: Compatible with hasp or latch styles you offer.
+- **Cleaning supplies**: Kits with spray, cloths, sponges for move-out or job-site cleanup.
 
 ---
 

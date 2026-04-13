@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 
 import { buttonVariants } from "@/components/ui/button";
 import { getLegalMarkdown } from "@/lib/read-markdown";
-import { site } from "@/lib/site";
+import { payNowLinkProps, site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -52,8 +52,8 @@ export default async function RenterAgreementPage() {
             <ReactMarkdown components={markdownComponents}>{markdown}</ReactMarkdown>
           </article>
           <div className="mt-12 print:hidden">
-            <Link href="/contact" className={cn(buttonVariants({ size: "lg" }))}>
-              Request a rental
+            <Link {...payNowLinkProps()} className={cn(buttonVariants({ size: "lg" }))}>
+              Rent Now
             </Link>
           </div>
         </div>

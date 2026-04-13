@@ -16,15 +16,15 @@ GitHub: [github.com/auhdz/top-bins](https://github.com/auhdz/top-bins) (reposito
 | **Auth** | NextAuth.js / Auth.js or Clerk (optional for v1) | Customer accounts and admin separation |
 | **Hosting** | Vercel, Railway, or similar | Fits Next.js; pair DB on managed Postgres |
 
-**Admin:** A simple internal dashboard (protected route or separate deploy) for orders, inventory counts, and delivery windows—can start as server actions + Prisma before adding a full CMS.
+**Admin:** A simple internal dashboard (protected route or separate deploy) for orders, inventory counts, and delivery windows: can start as server actions + Prisma before adding a full CMS.
 
 ## Documentation in this repo
 
-- [`PROJECT-BRIEF.md`](./PROJECT-BRIEF.md) — Business context, audience, goals
-- [`docs/requirements.md`](./docs/requirements.md) — Functional and non-functional requirements
-- [`docs/user-stories.md`](./docs/user-stories.md) — Customers and admins
-- [`docs/design-guidelines.md`](./docs/design-guidelines.md) — Visual direction (industrial, charcoal + yellow)
-- [`content/pages/`](./content/pages/) — Page/section copy and structure (Markdown; migrate into React/MDX later)
+- [`PROJECT-BRIEF.md`](./PROJECT-BRIEF.md): Business context, audience, goals
+- [`docs/requirements.md`](./docs/requirements.md): Functional and non-functional requirements
+- [`docs/user-stories.md`](./docs/user-stories.md): Customers and admins
+- [`docs/design-guidelines.md`](./docs/design-guidelines.md): Visual direction (industrial, charcoal + yellow)
+- [`content/pages/`](./content/pages/): Page/section copy and structure (Markdown; migrate into React/MDX later)
 
 ## Run the website (local)
 
@@ -48,7 +48,7 @@ If an older Vercel project still had **Root Directory** set to `web`, remove it 
 
 Optional environment variables (Production / Preview):
 
-- **`NEXT_PUBLIC_SITE_URL`** — your live URL, e.g. `https://your-project.vercel.app` (used for metadata).
+- **`NEXT_PUBLIC_SITE_URL`**: your live URL, e.g. `https://your-project.vercel.app` (used for metadata).
 
 ## Documentation only
 
@@ -81,4 +81,4 @@ This creates `QuoteRequest` (and `Product`) tables from `prisma/schema.prisma`. 
 
 ## License
 
-Proprietary — adjust for your organization.
+Proprietary: adjust for your organization.

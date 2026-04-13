@@ -4,12 +4,12 @@ const items = [
   {
     icon: Truck,
     title: "Save time",
-    body: "We drop off empty bins and collect them when your rental ends—less chasing boxes, more progress.",
+    body: "We drop off empty bins and collect them when your rental ends: less chasing boxes, more progress.",
   },
   {
     icon: ShieldCheck,
     title: "Built tough",
-    body: "Rigid plastic stands up to moves, garages, and demanding job-site conditions—not flimsy retail totes.",
+    body: "Rigid plastic stands up to moves, garages, and demanding job-site conditions, not flimsy retail totes.",
   },
   {
     icon: Package,

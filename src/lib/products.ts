@@ -17,7 +17,7 @@ export type ProductCard = {
 export const products: ProductCard[] = [
   {
     slug: "standard-bin",
-    name: "Standard 27-gallon bin",
+    name: "Regular size (27 gallon)",
     tagline: "Everyday moves & rooms",
     description:
       "Sterilite Industrial heavy-duty tote (black with yellow lid). Integrated handles, stable stack, secure lid.",

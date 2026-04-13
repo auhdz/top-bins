@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { site } from "@/lib/site";
+import { payNowLinkProps, site } from "@/lib/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -19,7 +19,7 @@ export default function AboutPage() {
             Built for moves, sites, and seasons that don&apos;t wait
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-            We focus on durable equipment and predictable logistics so you can focus on the job—not
+            We focus on durable equipment and predictable logistics so you can focus on the job, not
             sourcing boxes.
           </p>
         </div>
@@ -32,9 +32,9 @@ export default function AboutPage() {
             {site.name} exists to make temporary storage simpler. Households and crews often lose time
             and money to single-use cardboard or flimsy totes. Our rental fleet uses{" "}
             <strong className="text-foreground">
-              heavy-duty plastic bins and crates—the kind you recognize from serious moves
+              heavy-duty plastic bins and crates (the kind you recognize from serious moves)
             </strong>
-            —so you get durability without the clutter of ownership.
+            , so you get durability without the clutter of ownership.
           </p>
           <p className="mt-4 leading-relaxed text-muted-foreground">
             We pair that equipment with <strong className="text-foreground">delivery and pickup</strong>{" "}
@@ -88,13 +88,20 @@ export default function AboutPage() {
         <div className="rounded-xl border border-border bg-muted/40 p-6">
           <h3 className="font-heading text-lg font-semibold">Service area</h3>
           <p className="mt-2 text-sm text-muted-foreground">
-            <strong className="text-foreground">{site.serviceArea}</strong> — contact us for
-            commercial routes or expansion notifications.
+            <strong className="text-foreground">{site.serviceArea}</strong>. For commercial routes or
+            expansion notifications, call{" "}
+            <a
+              href={`tel:${site.phoneTel}`}
+              className="font-medium text-foreground underline underline-offset-4"
+            >
+              {site.phone}
+            </a>
+            .
           </p>
         </div>
 
-        <Link href="/contact" className={cn(buttonVariants({ size: "lg" }))}>
-          Rent bins
+        <Link {...payNowLinkProps()} className={cn(buttonVariants({ size: "lg" }))}>
+          Rent Now
         </Link>
       </section>
     </div>

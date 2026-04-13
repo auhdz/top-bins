@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { products } from "@/lib/products";
-import { site } from "@/lib/site";
+import { payNowLinkProps, site } from "@/lib/site";
 import { buttonVariants } from "@/components/ui/button";
 import {
   Accordion,
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 const faq = [
   {
     q: "Do you prorate partial weeks?",
-    a: "Billing is structured in weekly increments to keep routing predictable. If you need a shorter window, ask—we’ll quote the closest fit.",
+    a: "Billing is structured in weekly increments to keep routing predictable. If you need a shorter window, ask. We’ll quote the closest fit.",
   },
   {
     q: "What if I need more bins mid-rental?",
@@ -28,7 +28,7 @@ const faq = [
   },
   {
     q: "Do you invoice businesses?",
-    a: "Yes—net terms can be arranged for qualified accounts. Mention it on your quote request.",
+    a: "Yes. Net terms can be arranged for qualified accounts. Mention it when you book.",
   },
 ] as const;
 
@@ -85,7 +85,7 @@ export default function PricingPage() {
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               Zone A (metro core): <strong className="text-foreground">$35</strong> each way or{" "}
               <strong className="text-foreground">$60</strong> round-trip placeholder. Extended zones
-              calculated at checkout or on your quote.
+              calculated at checkout.
             </p>
           </div>
           <div className="rounded-xl border border-border bg-muted/30 p-6">
@@ -112,11 +112,11 @@ export default function PricingPage() {
         </div>
 
         <div className="mt-12 flex flex-wrap gap-3">
-          <Link href="/contact" className={cn(buttonVariants({ size: "lg" }))}>
-            Calculate my total
+          <Link {...payNowLinkProps()} className={cn(buttonVariants({ size: "lg" }))}>
+            Rent Now
           </Link>
-          <Link href="/contact" className={cn(buttonVariants({ variant: "outline", size: "lg" }))}>
-            Request a bulk quote
+          <Link href="/#checkout" className={cn(buttonVariants({ variant: "outline", size: "lg" }))}>
+            View packages
           </Link>
         </div>
       </section>

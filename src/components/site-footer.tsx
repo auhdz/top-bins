@@ -6,8 +6,8 @@ import { site, nav } from "@/lib/site";
 export function SiteFooter() {
   return (
     <footer className="border-t border-white/10 bg-zinc-900 text-zinc-100">
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-        <div className="grid gap-10 md:grid-cols-3">
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <div className="grid gap-12 md:grid-cols-3 md:gap-14">
           <div>
             <Image
               src={site.logoSrc}
@@ -39,11 +39,11 @@ export function SiteFooter() {
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
-              Contact
+              Reach us
             </p>
             <ul className="mt-3 space-y-2 text-sm text-zinc-300">
               <li>
-                <a href={`tel:${site.phone.replace(/\D/g, "")}`} className="hover:text-white">
+                <a href={`tel:${site.phoneTel}`} className="hover:text-white">
                   {site.phone}
                 </a>
               </li>
@@ -54,14 +54,6 @@ export function SiteFooter() {
               </li>
               <li className="text-zinc-400">{site.serviceArea}</li>
             </ul>
-            <p className="mt-4 text-xs text-zinc-500">
-              <Link
-                href="/legal/renter-agreement"
-                className="underline underline-offset-4 hover:text-zinc-300"
-              >
-                Renter agreement
-              </Link>
-            </p>
           </div>
         </div>
         <div className="mt-10 flex flex-col gap-2 border-t border-white/10 pt-8 text-xs text-zinc-500 sm:flex-row sm:items-center sm:justify-between">

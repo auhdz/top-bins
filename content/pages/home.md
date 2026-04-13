@@ -1,4 +1,4 @@
-# Home page — concept & copy structure
+# Home page: concept & copy structure
 
 **Route (future):** `/`  
 **Primary CTA:** Rent Bins Today  
@@ -10,7 +10,7 @@
 
 **Headline:** Heavy-duty bins. Delivered. Picked up when you are done.
 
-**Subhead:** Rent stackable commercial-grade plastic storage bins and crates for moving, job sites, events, and on-site organization—plus optional accessories like padding, locks, and cleaning supplies.
+**Subhead:** Rent stackable commercial-grade plastic storage bins and crates for moving, job sites, events, and on-site organization: plus optional accessories like padding, locks, and cleaning supplies.
 
 **CTAs:**
 
@@ -29,10 +29,10 @@
 
 ## Benefits (3–4 columns)
 
-1. **Save time** — We drop off empty bins and collect them when your rental ends. Less chasing boxes.
-2. **Built tough** — Rigid plastic construction stands up to moves, garages, and job-site conditions.
-3. **Stay organized** — Uniform sizes stack neatly; lids stay secure for transport and storage.
-4. **Add what you need** — Pads, locks, and supplies available as add-ons.
+1. **Save time**: We drop off empty bins and collect them when your rental ends. Less chasing boxes.
+2. **Built tough**: Rigid plastic construction stands up to moves, garages, and job-site conditions.
+3. **Stay organized**: Uniform sizes stack neatly; lids stay secure for transport and storage.
+4. **Add what you need**: Pads, locks, and supplies available as add-ons.
 
 ---
 
@@ -59,7 +59,7 @@ Cards for 2–3 hero SKUs (e.g., “Standard bin,” “Large crate,” “Contr
 
 **Headline:** Ready to clear the clutter or nail your next move?
 
-**Button:** Get started — **Rent Bins Today**
+**Button:** Get started: **Rent Bins Today**
 
 ---
 

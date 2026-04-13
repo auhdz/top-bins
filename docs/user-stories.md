@@ -1,4 +1,4 @@
-# User stories — Storage Bin & Crate Rental Service
+# User stories: Storage Bin & Crate Rental Service
 
 Format: **As a [role], I want [capability], so that [benefit].** Acceptance criteria are indicative; refine during implementation.
 
@@ -87,5 +87,5 @@ Format: **As a [role], I want [capability], so that [benefit].** Acceptance crit
 ## Out of scope (initial backlog placeholders)
 
 - Native apps
-- Multi-language (i18n) — add stories when prioritized
+- Multi-language (i18n): add stories when prioritized
 - Partner API for third-party marketplaces

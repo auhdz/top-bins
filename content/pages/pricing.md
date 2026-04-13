@@ -1,4 +1,4 @@
-# Pricing & Packages — concept & copy structure
+# Pricing & Packages: concept & copy structure
 
 **Route (future):** `/pricing`  
 **Goal:** Transparent pricing that drives checkout or quote requests.
@@ -13,14 +13,14 @@
 
 ---
 
-## Pricing model (example — replace with real numbers)
+## Pricing model (example: replace with real numbers)
 
 ### Per-unit weekly rate
 
 - **Standard bin:** from **$[X] / week** each  
 - **Large crate:** from **$[X] / week** each  
 
-**Minimum rental:** [e.g., 1 week] — *business rule*
+**Minimum rental:** [e.g., 1 week]: *business rule*
 
 ### Delivery & pickup
 
@@ -39,7 +39,7 @@
 
 ## Deposits & fees
 
-Short paragraph: **Security deposit** hold or charge; **cleaning** if returned excessively dirty; **replacement** for missing units—link to terms.
+Short paragraph: **Security deposit** hold or charge; **cleaning** if returned excessively dirty; **replacement** for missing units: link to terms.
 
 ---
 

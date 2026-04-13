@@ -1,6 +1,6 @@
 # Customer-facing pricing (public)
 
-**Bear Box Moving Co** — Koreatown, Los Angeles · Current as of April 2026
+**Bear Box Rentals**, Koreatown, Los Angeles · Current as of April 2026
 
 This file is the canonical **public** pricing copy. It intentionally excludes internal P&L, margins, break-even, and other non-customer finances.
 
@@ -8,7 +8,7 @@ This file is the canonical **public** pricing copy. It intentionally excludes in
 
 | Bin type | Weekly rate |
 | -------- | ----------- |
-| Standard 27-gallon bin | **$6.00** per week |
+| Regular size (27 gallon) | **$6.00** per week |
 | Large industrial crate | **$9.00** per week |
 
 Billing is in **weekly increments** (minimum rental: 1 week).
@@ -20,13 +20,13 @@ Billing is in **weekly increments** (minimum rental: 1 week).
 
 ## Delivery & pickup (Koreatown)
 
-- Standard **round-trip** delivery & pickup: **$40** (when not using the Full Fleet promo below).
+- Standard **round-trip** delivery & pickup: **$40** (when not using the Full bundle promo below).
 
-## Promo: Full Fleet — buy 5 bins, get free delivery
+## Promo: Full bundle (five matching bins, get free delivery)
 
-Rent **all five bins** in our current inventory (**4 standard + 1 large**) as the **Full Fleet Bundle** and receive **free round-trip delivery and pickup** in **Koreatown**.
+Choose **5 standard bins** or **5 large crates** for the **included 2-week period** as the **Full bundle** and receive **free round-trip delivery and pickup** in **Koreatown**.
 
-- Example bundle: **2 weeks** for all 5 bins = **$198** (includes free delivery & pickup in Koreatown; see master doc / checkout for current bundle terms).
-- Additional weeks on the bundle are billed per the agreed weekly structure.
+- Total due (rental + deposits) is shown at checkout and follows the published weekly rates × five bins × two weeks, plus per-bin deposits.
+- Additional weeks on the bundle are billed at the weekly rate × five bins (amount depends on whether you chose standard or large).
 
-This is the primary public promotion: **5 boxes (full fleet) → free delivery** in-zone.
+This is the primary in-zone promotion: **five matching bins on the bundle → free delivery**.

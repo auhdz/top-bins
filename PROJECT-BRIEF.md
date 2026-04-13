@@ -1,8 +1,8 @@
-# Project brief — Storage Bin & Crate Rental Service
+# Project brief: Storage Bin & Crate Rental Service
 
 ## Business description
 
-We operate a **rental service for heavy-duty plastic storage bins, crates, and containers**—the kind used by professional movers and facilities: stackable units, often **dark gray bodies with contrasting yellow lids**, durable enough for repeated use, and suitable for labeling and organization.
+We operate a **rental service for heavy-duty plastic storage bins, crates, and containers**: the kind used by professional movers and facilities: stackable units, often **dark gray bodies with contrasting yellow lids**, durable enough for repeated use, and suitable for labeling and organization.
 
 Customers use our equipment for:
 
@@ -28,25 +28,25 @@ Fulfillment is built around **delivery and pickup**: we bring empty bins when an
 
 ## Unique selling points (USPs)
 
-1. **Professional-grade equipment** — Commercial-style bins (not flimsy retail totes); stackable, stable, and built for real-world abuse.
-2. **Full-service logistics** — Delivery and pickup reduce friction; customers focus on packing, not sourcing boxes.
-3. **Flexible sizing** — Multiple bin/crate sizes so customers pay for capacity they need.
-4. **Accessory ecosystem** — One place for bins plus pads, locks, and cleaning supplies aligned with moving and storage workflows.
-5. **Trust and clarity** — Transparent pricing, clear rental periods, and straightforward booking—reducing anxiety around moves and projects.
+1. **Professional-grade equipment**: Commercial-style bins (not flimsy retail totes); stackable, stable, and built for real-world abuse.
+2. **Full-service logistics**: Delivery and pickup reduce friction; customers focus on packing, not sourcing boxes.
+3. **Flexible sizing**: Multiple bin/crate sizes so customers pay for capacity they need.
+4. **Accessory ecosystem**: One place for bins plus pads, locks, and cleaning supplies aligned with moving and storage workflows.
+5. **Trust and clarity**: Transparent pricing, clear rental periods, and straightforward booking: reducing anxiety around moves and projects.
 
 ## Brand personality
 
-- **Reliable** — On-time delivery, accurate counts, no surprises.
-- **Industrial-modern** — Clean layouts, strong typography, **charcoal + yellow** accents echoing the product (dark gray bins, yellow lids).
-- **Approachable** — Plain language; no jargon-heavy logistics speak on the homepage.
+- **Reliable**: On-time delivery, accurate counts, no surprises.
+- **Industrial-modern**: Clean layouts, strong typography, **charcoal + yellow** accents echoing the product (dark gray bins, yellow lids).
+- **Approachable**: Plain language; no jargon-heavy logistics speak on the homepage.
 
 ## Project goals (website)
 
-1. **Convert visitors** — Primary CTA: rent bins (quote or book); secondary: contact for large/commercial jobs.
-2. **Educate** — How rental works, what sizes exist, what’s included, delivery zones.
-3. **Build trust** — Social proof (testimonials, logos), guarantees, FAQ, professional photography of real bins and accessories.
-4. **Enable self-service** — Online inventory view, pricing, booking window selection, and account area for order status (phased rollout).
-5. **Support operations** — Admin visibility into bookings, inventory availability, and payment status.
+1. **Convert visitors**: Primary CTA: rent bins (quote or book); secondary: contact for large/commercial jobs.
+2. **Educate**: How rental works, what sizes exist, what’s included, delivery zones.
+3. **Build trust**: Social proof (testimonials, logos), guarantees, FAQ, professional photography of real bins and accessories.
+4. **Enable self-service**: Online inventory view, pricing, booking window selection, and account area for order status (phased rollout).
+5. **Support operations**: Admin visibility into bookings, inventory availability, and payment status.
 
 ## Success metrics (initial)
 
@@ -63,4 +63,4 @@ Fulfillment is built around **delivery and pickup**: we bring empty bins when an
 
 ## Visual reference
 
-Product imagery should emphasize **stackable dark gray bins with yellow lids**, optional **teal cleaning cloths and yellow sponges** as contextual props—reinforcing cleanliness, preparedness, and a “ready to work” kit. The site should feel as **durable and intentional** as the product.
+Product imagery should emphasize **stackable dark gray bins with yellow lids**, optional **teal cleaning cloths and yellow sponges** as contextual props: reinforcing cleanliness, preparedness, and a “ready to work” kit. The site should feel as **durable and intentional** as the product.

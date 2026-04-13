@@ -1,9 +1,9 @@
-# Bear Box Moving Co – Renter Agreement & Policies
+# Bear Box Rentals – Renter Agreement & Policies
 
-**Effective April 11, 2026**  
+**Effective April 2024**  
 **Koreatown, Los Angeles**
 
-Please read this agreement carefully. By renting bins from Bear Box Moving Co, you agree to the terms below.
+Please read this agreement carefully. By renting bins from Bear Box Rentals, you agree to the terms below.
 
 ## 1. Rental Terms
 
@@ -17,12 +17,12 @@ Please read this agreement carefully. By renting bins from Bear Box Moving Co, y
   - **$15** per Standard Bin
   - **$25** per Large Crate
 - **Minimum rental:** 1 week (billed in weekly increments)
-- **Full Fleet Bundle** (all 5 bins – our current entire inventory): 4 Standard + 1 Large for 2 weeks = **$198** (includes free delivery & pickup in Koreatown)
+- **Full bundle:** choose **5 standard bins** or **5 large crates** for **2 weeks**; total due is quoted at checkout (weekly rate × five bins × two weeks, plus refundable deposits per bin); includes free delivery & pickup in Koreatown
 
 ## 2. Delivery & Pickup (Koreatown Zone Only)
 
 - Standard round-trip delivery & pickup: **$40**
-- **Free** round-trip delivery & pickup on the **Full Fleet Bundle** (Koreatown only)
+- **Free** round-trip delivery & pickup on the **Full bundle** (five standard or five large, Koreatown only)
 - **Delivery window:** 24–48 hours after booking
 - You must be present or have someone available to accept the bins at delivery and be ready for pickup on the scheduled date.
 
@@ -85,7 +85,7 @@ You may not:
 
 ## 9. Liability
 
-Bear Box Moving Co is not responsible for any damage to or loss of **your personal belongings** inside the bins. You assume all risk for your own items.
+Bear Box Rentals is not responsible for any damage to or loss of **your personal belongings** inside the bins. You assume all risk for your own items.
 
 ## 10. Governing Law
 
@@ -93,4 +93,4 @@ This agreement is governed by the laws of the **State of California**. Any dispu
 
 ---
 
-By renting from Bear Box Moving Co you confirm that you have read, understood, and agree to all terms above.
+By renting from Bear Box Rentals you confirm that you have read, understood, and agree to all terms above.

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { products } from "@/lib/products";
+import { payNowLinkProps } from "@/lib/site";
 import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
@@ -26,7 +27,7 @@ export function FeaturedProducts() {
             Sizes for everyday moves and heavier loads
           </h2>
           <p className="mt-3 text-muted-foreground">
-            Start with our most popular bins—then add accessories at checkout or on your quote.
+            Start with our most popular bins, then add accessories at checkout.
           </p>
         </div>
 
@@ -54,8 +55,8 @@ export function FeaturedProducts() {
                 <p className="font-heading text-lg font-semibold tabular-nums text-foreground">
                   {p.priceLabel}
                 </p>
-                <Link href="/contact" className={cn(buttonVariants())}>
-                  Start rental
+                <Link {...payNowLinkProps()} className={cn(buttonVariants())}>
+                  Rent Now
                 </Link>
               </CardFooter>
             </Card>

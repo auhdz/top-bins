@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Newsreader, Plus_Jakarta_Sans } from "next/font/google";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -10,6 +10,13 @@ import "./globals.css";
 const sans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
+});
+
+/** Editorial display: section titles (Granola-style serif pairing) */
+const display = Newsreader({
+  subsets: ["latin"],
+  variable: "--font-serif",
   display: "swap",
 });
 
@@ -40,10 +47,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${sans.variable} h-full scroll-smooth`}>
-      <body className="flex min-h-full flex-col bg-background font-sans text-foreground antialiased">
+    <html lang="en" className={`${sans.variable} ${display.variable} h-full scroll-smooth`}>
+      <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
         <SiteHeader />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pt-[var(--site-header-offset)]">{children}</main>
         <SiteFooter />
       </body>
     </html>

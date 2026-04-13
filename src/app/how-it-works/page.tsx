@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { site } from "@/lib/site";
+import { payNowLinkProps, site } from "@/lib/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -19,7 +19,7 @@ export default function HowItWorksPage() {
             Simple rental. Clear timelines.
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-            Know what happens from the first delivery to final pickup—no logistics jargon.
+            Know what happens from the first delivery to final pickup, with no logistics jargon.
           </p>
         </div>
       </section>
@@ -49,7 +49,7 @@ export default function HowItWorksPage() {
           <h2 className="font-heading text-2xl font-semibold">3. We pick up</h2>
           <p className="mt-3 leading-relaxed text-muted-foreground">
             On your scheduled pickup date, we retrieve empty bins from the agreed location. We verify
-            counts against your order. Need more time? Contact us before your pickup window—subject to
+            counts against your order. Need more time? Call us before your pickup window, subject to
             availability and prorated fees.
           </p>
         </article>
@@ -58,10 +58,17 @@ export default function HowItWorksPage() {
           <h3 className="font-heading text-lg font-semibold">Service area</h3>
           <p className="mt-2 text-sm text-muted-foreground">
             We currently serve <strong className="text-foreground">{site.serviceArea}</strong>. Expanding
-            soon—ask about your zip on{" "}
-            <Link href="/contact" className="font-medium text-foreground underline underline-offset-4">
-              the contact form
-            </Link>
+            soon. See{" "}
+            <Link href="/#checkout" className="font-medium text-foreground underline underline-offset-4">
+              pricing &amp; checkout
+            </Link>{" "}
+            or call{" "}
+            <a
+              href={`tel:${site.phoneTel}`}
+              className="font-medium text-foreground underline underline-offset-4"
+            >
+              {site.phone}
+            </a>
             .
           </p>
         </div>
@@ -93,11 +100,11 @@ export default function HowItWorksPage() {
         </div>
 
         <div className="flex flex-wrap gap-3">
-          <Link href="/contact" className={cn(buttonVariants({ size: "lg" }))}>
-            Rent bins today
+          <Link {...payNowLinkProps()} className={cn(buttonVariants({ size: "lg" }))}>
+            Rent Now
           </Link>
-          <Link href="/contact" className={cn(buttonVariants({ variant: "outline", size: "lg" }))}>
-            Contact us
+          <Link href="/#checkout" className={cn(buttonVariants({ variant: "outline", size: "lg" }))}>
+            View pricing
           </Link>
         </div>
       </section>

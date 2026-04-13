@@ -1,4 +1,4 @@
-# Requirements — Storage Bin & Crate Rental Service
+# Requirements: Storage Bin & Crate Rental Service
 
 ## Functional requirements
 

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { buttonVariants } from "@/components/ui/button";
+import { payNowLinkProps } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export function CtaBand() {
@@ -11,26 +12,26 @@ export function CtaBand() {
           Ready to clear the clutter or nail your next move?
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-sm text-zinc-400">
-          Get a confirmed delivery window and straightforward pricing—no guesswork.
+          Get a confirmed delivery window and straightforward pricing, with no guesswork.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link
-            href="/contact"
+            {...payNowLinkProps()}
             className={cn(
               buttonVariants({ size: "lg" }),
               "h-11 min-w-[12rem] px-8 text-base shadow-lg shadow-black/25"
             )}
           >
-            Rent bins today
+            Rent Now
           </Link>
           <Link
-            href="/contact"
+            href="/#checkout"
             className={cn(
               buttonVariants({ variant: "outline", size: "lg" }),
               "h-11 border-white/30 bg-transparent px-8 text-base text-white hover:bg-white/10"
             )}
           >
-            Get a quote
+            View pricing
           </Link>
         </div>
       </div>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { accessories, products } from "@/lib/products";
-import { site } from "@/lib/site";
+import { payNowLinkProps, site } from "@/lib/site";
 import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
@@ -31,9 +31,9 @@ export default function ProductsPage() {
             Bins and crates built for real work
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-            Choose from multiple rental sizes—stackable, with secure lids on select models, and
+            Choose from multiple rental sizes: stackable, with secure lids on select models, and
             designed for repeated use. Add pads, locks, or cleaning supplies at checkout or when
-            you request a quote.
+            you check out.
           </p>
         </div>
       </section>
@@ -81,7 +81,7 @@ export default function ProductsPage() {
                     <div>
                       <dt className="text-muted-foreground">Deposit (refundable)</dt>
                       <dd className="font-medium tabular-nums">
-                        ${(p.depositCents / 100).toFixed(2)} per unit — policy in rental agreement
+                        ${(p.depositCents / 100).toFixed(2)} per unit (policy in rental agreement)
                       </dd>
                     </div>
                   )}
@@ -91,8 +91,8 @@ export default function ProductsPage() {
                 <Link href="/#checkout" className={cn(buttonVariants({ variant: "outline" }))}>
                   View pricing
                 </Link>
-                <Link href="/contact" className={cn(buttonVariants())}>
-                  Start rental
+                <Link {...payNowLinkProps()} className={cn(buttonVariants())}>
+                  Rent Now
                 </Link>
               </CardFooter>
             </Card>
@@ -105,7 +105,7 @@ export default function ProductsPage() {
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <h2 className="font-heading text-2xl font-semibold tracking-tight">Accessories</h2>
             <p className="mt-2 max-w-2xl text-muted-foreground">
-              Add these to your rental or quote—availability varies by region.
+              Add these to your rental at checkout. Availability varies by region.
             </p>
             <ul className="mt-8 grid gap-4 sm:grid-cols-3">
               {accessories.map((a) => (

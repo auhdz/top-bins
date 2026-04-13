@@ -1,4 +1,4 @@
-# Contact / Get a Quote — concept & copy structure
+# Contact / Get a Quote: concept & copy structure
 
 **Route (future):** `/contact`  
 **Goal:** Capture leads; support phone/email; reduce friction on mobile.
@@ -15,9 +15,9 @@
 
 ## Contact methods
 
-- **Phone:** [###-###-####] — [hours, e.g., Mon–Sat 8–6]
-- **Email:** [hello@domain.com]
-- **Service area:** [city/region] — *link to map or list*
+- **Phone:** [###-###-####] ([hours, e.g., Mon–Sat 8–6])
+- **Email:** [info@bearboxrentals.com]
+- **Service area:** [city/region] (*link to map or list*)
 
 ---
 
