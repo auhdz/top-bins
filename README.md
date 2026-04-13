@@ -1,8 +1,8 @@
-# Top Bins
+# Bear Box Rentals
 
-GitHub: [github.com/auhdz/top-bins](https://github.com/auhdz/top-bins) (repository name `top-bins`; GitHub does not allow spaces in repo URLs).
+GitHub: [github.com/auhdz/top-bins](https://github.com/auhdz/top-bins) (repository slug `top-bins`; rename the repo in GitHub settings anytime).
 
-**Top Bins** is the brand and repository for a storage bin and crate rental business: heavy-duty plastic bins and containers for moving, storage, job sites, events, and equipment protection. This repository includes product documentation, design guidelines, and a **Next.js app at the repository root** (no `web/` subfolder—Vercel builds the default directory).
+**Bear Box Rentals** is the brand for a storage bin and box rental business: heavy-duty plastic bins and containers for moving, storage, job sites, events, and equipment protection. This repository includes product documentation, design guidelines, and a **Next.js app at the repository root**. The header/footer use the Bear Box Rentals wordmark in `public/brand/`.
 
 ## Recommended tech stack
 

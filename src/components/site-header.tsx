@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
@@ -14,19 +15,38 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
+function navItemActive(pathname: string, href: string) {
+  if (href.startsWith("/#")) return false;
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export function SiteHeader() {
   const pathname = usePathname();
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/80 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
-        <Link href="/" className="flex min-w-0 flex-col leading-tight">
-          <span className="truncate font-heading text-lg font-semibold tracking-tight text-foreground">
-            {site.name}
-          </span>
-          <span className="hidden text-xs text-muted-foreground sm:block">
-            {site.tagline}
-          </span>
+        <Link
+          href="/"
+          className="flex min-w-0 flex-shrink-0 items-center gap-2.5 leading-tight sm:gap-3"
+        >
+          <Image
+            src={site.logoSrc}
+            alt={site.logoAlt}
+            width={200}
+            height={56}
+            className="h-9 w-auto shrink-0 sm:h-10"
+            priority
+          />
+          <div className="flex min-w-0 flex-col justify-center">
+            <span className="font-heading text-base font-semibold tracking-tight text-foreground sm:text-lg">
+              {site.headerWordmark}
+            </span>
+            <span className="text-[10px] leading-tight text-muted-foreground sm:text-xs">
+              {site.tagline}
+            </span>
+          </div>
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Main">
@@ -36,7 +56,7 @@ export function SiteHeader() {
               href={item.href}
               className={cn(
                 "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
-                pathname === item.href
+                navItemActive(pathname, item.href)
                   ? "bg-muted text-foreground"
                   : "text-muted-foreground hover:bg-muted/80 hover:text-foreground"
               )}
@@ -48,19 +68,19 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <Link
-            href="/pricing"
+            href="/#checkout"
             className={cn(
               buttonVariants({ variant: "ghost", size: "sm" }),
               "hidden sm:inline-flex"
             )}
           >
-            View pricing
+            Pricing
           </Link>
           <Link
-            href="/contact"
+            href="/#checkout"
             className={cn(buttonVariants({ size: "sm" }), "hidden sm:inline-flex")}
           >
-            Rent bins today
+            Rent Today
           </Link>
 
           <Sheet>
@@ -74,8 +94,19 @@ export function SiteHeader() {
               <Menu className="size-5" />
             </SheetTrigger>
             <SheetContent side="right" className="w-[min(100%,20rem)] gap-0 p-0">
-              <div className="flex flex-col border-b p-4">
-                <span className="font-heading font-semibold">{site.name}</span>
+              <div className="flex flex-col gap-2 border-b p-4">
+                <div className="flex items-center gap-2.5">
+                  <Image
+                    src={site.logoSrc}
+                    alt={site.logoAlt}
+                    width={200}
+                    height={56}
+                    className="h-10 w-auto shrink-0"
+                  />
+                  <span className="font-heading text-lg font-semibold tracking-tight text-foreground">
+                    {site.headerWordmark}
+                  </span>
+                </div>
                 <span className="text-xs text-muted-foreground">{site.tagline}</span>
               </div>
               <nav className="flex flex-col p-2" aria-label="Mobile">
@@ -87,7 +118,7 @@ export function SiteHeader() {
                         href={item.href}
                         className={cn(
                           "block rounded-lg px-3 py-2.5 text-sm font-medium",
-                          pathname === item.href
+                          navItemActive(pathname, item.href)
                             ? "bg-muted text-foreground"
                             : "text-muted-foreground hover:bg-muted/80 hover:text-foreground"
                         )}
@@ -102,17 +133,17 @@ export function SiteHeader() {
                 <SheetClose
                   render={
                     <Link
-                      href="/contact"
+                      href="/#checkout"
                       className={cn(buttonVariants({ className: "w-full justify-center" }))}
                     />
                   }
                 >
-                  Rent bins today
+                  Rent Today
                 </SheetClose>
                 <SheetClose
                   render={
                     <Link
-                      href="/pricing"
+                      href="/#checkout"
                       className={cn(
                         buttonVariants({
                           variant: "outline",
@@ -122,7 +153,7 @@ export function SiteHeader() {
                     />
                   }
                 >
-                  View pricing
+                  Pricing
                 </SheetClose>
               </div>
             </SheetContent>

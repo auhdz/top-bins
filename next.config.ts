@@ -4,6 +4,14 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: import.meta.dirname,
   },
+  async redirects() {
+    return [
+      { source: "/products", destination: "/#checkout", permanent: false },
+      { source: "/how-it-works", destination: "/#how-it-works", permanent: false },
+      { source: "/pricing", destination: "/#checkout", permanent: false },
+      { source: "/about", destination: "/", permanent: false },
+    ];
+  },
   images: {
     remotePatterns: [
       {

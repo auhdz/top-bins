@@ -51,13 +51,13 @@ export default function ContactPage() {
           </ul>
           <div className="mt-8 rounded-xl border border-dashed border-border bg-muted/30 p-4 text-sm text-muted-foreground">
             Prefer self-serve?{" "}
-            <Link href="/pricing" className="font-medium text-foreground underline underline-offset-4">
+            <Link href="/#checkout" className="font-medium text-foreground underline underline-offset-4">
               Review pricing
             </Link>{" "}
             first, then submit what you need.
           </div>
           <Link
-            href="/pricing"
+            href="/#checkout"
             className={cn(buttonVariants({ variant: "outline" }), "mt-6 inline-flex")}
           >
             View pricing

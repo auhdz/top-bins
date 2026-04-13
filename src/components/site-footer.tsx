@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { site, nav } from "@/lib/site";
@@ -8,8 +9,16 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <div className="grid gap-10 md:grid-cols-3">
           <div>
-            <p className="font-heading text-lg font-semibold text-white">{site.name}</p>
-            <p className="mt-2 max-w-sm text-sm text-zinc-400">{site.description}</p>
+            <Image
+              src={site.logoSrc}
+              alt=""
+              width={200}
+              height={56}
+              className="h-11 w-auto brightness-0 invert"
+              aria-hidden
+            />
+            <p className="sr-only">{site.name}</p>
+            <p className="mt-3 max-w-sm text-sm text-zinc-400">{site.description}</p>
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
@@ -45,11 +54,20 @@ export function SiteFooter() {
               </li>
               <li className="text-zinc-400">{site.serviceArea}</li>
             </ul>
+            <p className="mt-4 text-xs text-zinc-500">
+              <Link
+                href="/legal/renter-agreement"
+                className="underline underline-offset-4 hover:text-zinc-300"
+              >
+                Renter agreement
+              </Link>
+            </p>
           </div>
         </div>
         <div className="mt-10 flex flex-col gap-2 border-t border-white/10 pt-8 text-xs text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
-          <p className="text-zinc-600">Replace contact details with your production values.</p>
+          <p>
+            © {new Date().getFullYear()} {site.name}. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

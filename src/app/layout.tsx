@@ -25,6 +25,12 @@ export const metadata: Metadata = {
     description: site.description,
     type: "website",
     locale: "en_US",
+    images: [
+      {
+        url: "/brand/bear-box-rentals-logo.png",
+        alt: site.name,
+      },
+    ],
   },
 };
 

@@ -88,11 +88,11 @@ export default function ProductsPage() {
                 </dl>
               </CardContent>
               <CardFooter className="flex flex-wrap justify-end gap-3 border-t bg-muted/30">
-                <Link href="/pricing" className={cn(buttonVariants({ variant: "outline" }))}>
-                  Compare packages
+                <Link href="/#checkout" className={cn(buttonVariants({ variant: "outline" }))}>
+                  View pricing
                 </Link>
                 <Link href="/contact" className={cn(buttonVariants())}>
-                  {p.slug === "contractor-bundle" ? "Request quote" : "Start rental"}
+                  Start rental
                 </Link>
               </CardFooter>
             </Card>
@@ -100,25 +100,27 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      <section className="border-t border-border bg-muted/30 py-14 sm:py-20">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <h2 className="font-heading text-2xl font-semibold tracking-tight">Accessories</h2>
-          <p className="mt-2 max-w-2xl text-muted-foreground">
-            Add these to your rental or quote—availability varies by region.
-          </p>
-          <ul className="mt-8 grid gap-4 sm:grid-cols-3">
-            {accessories.map((a) => (
-              <li
-                key={a.name}
-                className="rounded-xl border border-border bg-background p-5 shadow-sm"
-              >
-                <p className="font-heading font-semibold text-foreground">{a.name}</p>
-                <p className="mt-2 text-sm text-muted-foreground">{a.blurb}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      {accessories.length > 0 ? (
+        <section className="border-t border-border bg-muted/30 py-14 sm:py-20">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <h2 className="font-heading text-2xl font-semibold tracking-tight">Accessories</h2>
+            <p className="mt-2 max-w-2xl text-muted-foreground">
+              Add these to your rental or quote—availability varies by region.
+            </p>
+            <ul className="mt-8 grid gap-4 sm:grid-cols-3">
+              {accessories.map((a) => (
+                <li
+                  key={a.name}
+                  className="rounded-xl border border-border bg-background p-5 shadow-sm"
+                >
+                  <p className="font-heading font-semibold text-foreground">{a.name}</p>
+                  <p className="mt-2 text-sm text-muted-foreground">{a.blurb}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      ) : null}
     </div>
   );
 }
