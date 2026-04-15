@@ -38,7 +38,7 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). Marketing routes: `/`, `/products`, `/how-it-works`, `/pricing`, `/about`, `/contact`. The contact form posts to `POST /api/quote`; without `DATABASE_URL`, requests are logged to the server console only.
+Open [http://localhost:3000](http://localhost:3000). Marketing routes include `/`, `/products`, `/faq`, `/how-it-works`, `/pricing`, `/about`, `/contact`, `/legal/privacy`, `/legal/terms`. The contact form posts to `POST /api/quote`; without `DATABASE_URL`, requests are logged to the server console only. **`/sitemap.xml`** and **`/robots.txt`** are generated for SEO.
 
 ## Deploy on Vercel
 
@@ -53,7 +53,13 @@ Environment variables (Production / Preview) — copy `.env.example` to `.env.lo
 - **`DATABASE_URL`**: PostgreSQL — needed to store subscriptions and webhook idempotency.
 - **`RESEND_API_KEY`**, **`EMAIL_FROM`**: optional; sends customer + internal emails when a subscription starts. See [Resend](https://resend.com).
 
-Checkout rate limit: `POST /api/create-checkout-session` allows **20 requests per minute per IP** per server instance (swap for Redis/Upstash in multi-instance production if needed).
+**Rate limits (N-14):** `POST /api/create-checkout-session` — **20 req/min per IP**; `POST /api/quote` — **15 req/min per IP** (in-memory per instance; use Redis/Upstash if you scale to many instances).
+
+**HTTPS:** Enforced automatically on Vercel and most managed hosts; no app code required.
+
+**Error monitoring (N-22):** Optional tools such as [Sentry](https://sentry.io) are not bundled here. Add later if you want production stack traces and release tracking.
+
+**Database backups (N-23):** Enable automated backups in your Postgres provider (Neon, Supabase, RDS, etc.) and periodically verify you can restore; not something this Next.js app configures.
 
 ## Documentation only
 

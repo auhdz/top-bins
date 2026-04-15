@@ -1,3 +1,5 @@
+import { deposits } from "@/lib/pricing";
+
 /** Weekly bin subscription pricing (matches Stripe Checkout line items) */
 
 export const STANDARD_WEEKLY_CENTS = 600;
@@ -39,4 +41,11 @@ export function clampQuantities(q: RentalQuantities): RentalQuantities {
     standardBins: Math.min(50, Math.max(0, Math.floor(Number(q.standardBins)))),
     largeCrates: Math.min(50, Math.max(0, Math.floor(Number(q.largeCrates)))),
   };
+}
+
+/** One-time refundable security deposits (charged on first Checkout invoice). */
+export function depositTotalCents(q: RentalQuantities): number {
+  const s = Math.max(0, Math.floor(q.standardBins));
+  const l = Math.max(0, Math.floor(q.largeCrates));
+  return s * deposits.standardBinCents + l * deposits.largeCrateCents;
 }

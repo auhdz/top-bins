@@ -28,9 +28,17 @@ export const headerNav = [
 /** Footer and other full sitemap links */
 export const nav = [
   { href: "/", label: "Home" },
+  { href: "/products", label: "Products" },
   { href: "/#how-it-works", label: "How it works" },
   { href: "/#checkout", label: "Pricing" },
   { href: "/rental", label: "Rent bins" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/contact", label: "Contact" },
+] as const;
+
+export const legalFooter = [
+  { href: "/legal/privacy", label: "Privacy" },
+  { href: "/legal/terms", label: "Terms" },
   { href: "/legal/renter-agreement", label: "Renter agreement" },
 ] as const;
 

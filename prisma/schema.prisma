@@ -65,6 +65,10 @@ model RentalSubscription {
 
   status                  String
 
+  deliveryWindow   String?
+  pickupWindow     String?
+  scheduleNotes    String?
+
   @@index([stripeCustomerId])
   @@index([customerEmail])
   @@index([status])

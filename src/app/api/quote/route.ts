@@ -1,5 +1,10 @@
 import { NextResponse } from "next/server";
 
+import { getClientIp, rateLimitSlidingWindow } from "@/lib/rate-limit";
+
+const QUOTE_RATE_LIMIT = 15;
+const QUOTE_WINDOW_MS = 60_000;
+
 type Body = {
   name?: string;
   email?: string;
@@ -12,6 +17,20 @@ type Body = {
 };
 
 export async function POST(request: Request) {
+  const ip = getClientIp(request);
+  const limited = rateLimitSlidingWindow(`quote:${ip}`, QUOTE_RATE_LIMIT, QUOTE_WINDOW_MS);
+  if (!limited.ok) {
+    return NextResponse.json(
+      { ok: false, error: "Too many requests. Try again in a moment." },
+      {
+        status: 429,
+        headers: limited.retryAfterSec
+          ? { "Retry-After": String(limited.retryAfterSec) }
+          : undefined,
+      }
+    );
+  }
+
   let body: Body;
   try {
     body = (await request.json()) as Body;

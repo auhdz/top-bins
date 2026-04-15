@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Newsreader, Plus_Jakarta_Sans } from "next/font/google";
 
+import { CookieNotice } from "@/components/cookie-notice";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { site } from "@/lib/site";
@@ -52,6 +53,7 @@ export default function RootLayout({
         <SiteHeader />
         <main className="flex-1 pt-[var(--site-header-offset)]">{children}</main>
         <SiteFooter />
+        <CookieNotice />
       </body>
     </html>
   );

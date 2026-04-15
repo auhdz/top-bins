@@ -4,6 +4,7 @@ import Stripe from "stripe";
 
 import { sendSubscriptionStartedEmails } from "@/lib/email/subscription-emails";
 import { prisma } from "@/lib/prisma";
+import { getWindowLabel } from "@/lib/rental-scheduling";
 import { getStripe } from "@/lib/stripe-server";
 
 export const runtime = "nodejs";
@@ -20,6 +21,24 @@ function parseBinMetadata(meta: Stripe.Metadata | null | undefined) {
   const totalBins =
     totalRaw > 0 ? totalRaw : Math.max(0, standardBins + largeCrates);
   return { standardBins, largeCrates, totalBins };
+}
+
+function mergeStripeMetadata(
+  session: Stripe.Checkout.Session,
+  sub: Stripe.Subscription
+): Stripe.Metadata {
+  return { ...(session.metadata ?? {}), ...(sub.metadata ?? {}) };
+}
+
+function parseScheduleFields(meta: Stripe.Metadata) {
+  const dw = String(meta.delivery_window ?? "").trim();
+  const pw = String(meta.pickup_window ?? "").trim();
+  const sn = String(meta.schedule_notes ?? "").trim();
+  return {
+    deliveryWindow: dw || null,
+    pickupWindow: pw || null,
+    scheduleNotes: sn || null,
+  };
 }
 
 export async function POST(request: Request) {
@@ -118,9 +137,9 @@ async function onCheckoutSessionCompleted(stripe: StripeClient, session: Stripe.
   }
 
   const sub = await stripe.subscriptions.retrieve(subscriptionId);
-  const { standardBins, largeCrates, totalBins } = parseBinMetadata(
-    sub.metadata && Object.keys(sub.metadata).length > 0 ? sub.metadata : session.metadata
-  );
+  const merged = mergeStripeMetadata(session, sub);
+  const { standardBins, largeCrates, totalBins } = parseBinMetadata(merged);
+  const { deliveryWindow, pickupWindow, scheduleNotes } = parseScheduleFields(merged);
 
   const email = session.customer_details?.email ?? session.customer_email ?? null;
 
@@ -134,6 +153,9 @@ async function onCheckoutSessionCompleted(stripe: StripeClient, session: Stripe.
       largeCrates,
       totalBins,
       status: sub.status,
+      deliveryWindow,
+      pickupWindow,
+      scheduleNotes,
     },
   });
 
@@ -143,6 +165,9 @@ async function onCheckoutSessionCompleted(stripe: StripeClient, session: Stripe.
     largeCrates,
     totalBins,
     stripeSubscriptionId: subscriptionId,
+    deliveryWindowLabel: deliveryWindow ? getWindowLabel(deliveryWindow) : null,
+    pickupWindowLabel: pickupWindow ? getWindowLabel(pickupWindow) : null,
+    scheduleNotes,
   });
 }
 
@@ -166,9 +191,9 @@ async function handleEventWithoutDatabase(stripe: StripeClient, event: Stripe.Ev
   if (!subscriptionId) return;
 
   const sub = await stripe.subscriptions.retrieve(subscriptionId);
-  const { standardBins, largeCrates, totalBins } = parseBinMetadata(
-    sub.metadata && Object.keys(sub.metadata).length > 0 ? sub.metadata : session.metadata
-  );
+  const merged = mergeStripeMetadata(session, sub);
+  const { standardBins, largeCrates, totalBins } = parseBinMetadata(merged);
+  const { deliveryWindow, pickupWindow, scheduleNotes } = parseScheduleFields(merged);
   const email = session.customer_details?.email ?? session.customer_email ?? null;
 
   await sendSubscriptionStartedEmails({
@@ -177,5 +202,8 @@ async function handleEventWithoutDatabase(stripe: StripeClient, event: Stripe.Ev
     largeCrates,
     totalBins,
     stripeSubscriptionId: subscriptionId,
+    deliveryWindowLabel: deliveryWindow ? getWindowLabel(deliveryWindow) : null,
+    pickupWindowLabel: pickupWindow ? getWindowLabel(pickupWindow) : null,
+    scheduleNotes,
   });
 }

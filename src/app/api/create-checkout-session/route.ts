@@ -1,9 +1,12 @@
 import { NextResponse } from "next/server";
 
+import { deposits } from "@/lib/pricing";
 import { getClientIp, rateLimitSlidingWindow } from "@/lib/rate-limit";
+import { isValidDeliveryPickupWindow } from "@/lib/rental-scheduling";
 import {
   clampQuantities,
   deliveryCentsForBins,
+  depositTotalCents,
   LARGE_WEEKLY_CENTS,
   STANDARD_WEEKLY_CENTS,
   totalBins,
@@ -71,6 +74,28 @@ export async function POST(req: Request) {
   const err = validateQuantities(q);
   if (err) return NextResponse.json({ error: err }, { status: 400 });
 
+  const deliveryWindow = body.deliveryWindow;
+  const pickupWindow = body.pickupWindow;
+  if (!isValidDeliveryPickupWindow(deliveryWindow)) {
+    return NextResponse.json({ error: "Choose a preferred delivery window." }, { status: 400 });
+  }
+  if (!isValidDeliveryPickupWindow(pickupWindow)) {
+    return NextResponse.json({ error: "Choose a preferred pickup window." }, { status: 400 });
+  }
+
+  let scheduleNotes: string | null = null;
+  const rawNotes = body.scheduleNotes;
+  if (rawNotes !== undefined && rawNotes !== null && rawNotes !== "") {
+    if (typeof rawNotes !== "string") {
+      return NextResponse.json({ error: "Invalid scheduling notes." }, { status: 400 });
+    }
+    const t = rawNotes.trim();
+    if (t.length > 500) {
+      return NextResponse.json({ error: "Scheduling notes must be 500 characters or less." }, { status: 400 });
+    }
+    scheduleNotes = t || null;
+  }
+
   const bins = totalBins(q);
   const deliveryCents = deliveryCentsForBins(bins);
   const freeDelivery = deliveryCents === 0;
@@ -137,14 +162,49 @@ export async function POST(req: Request) {
     });
   }
 
+  if (q.standardBins > 0) {
+    lineItems.push({
+      quantity: q.standardBins,
+      price_data: {
+        currency: "usd",
+        unit_amount: deposits.standardBinCents,
+        product_data: {
+          name: "Refundable security deposit — standard bin",
+          description: "Per bin; released per renter agreement when returned in acceptable condition",
+        },
+      },
+    });
+  }
+
+  if (q.largeCrates > 0) {
+    lineItems.push({
+      quantity: q.largeCrates,
+      price_data: {
+        currency: "usd",
+        unit_amount: deposits.largeCrateCents,
+        product_data: {
+          name: "Refundable security deposit — large crate",
+          description: "Per crate; released per renter agreement when returned in acceptable condition",
+        },
+      },
+    });
+  }
+
   const origin = getOrigin(req);
+  const depositCents = depositTotalCents(q);
   const metaBins = {
     standard_bins: String(q.standardBins),
     large_crates: String(q.largeCrates),
     total_bins: String(bins),
     free_delivery: freeDelivery ? "true" : "false",
     promotion: freeDelivery ? "5_plus_bins_free_delivery" : "none",
+    delivery_window: deliveryWindow,
+    pickup_window: pickupWindow,
+    schedule_notes: scheduleNotes ?? "",
+    deposit_total_cents: String(depositCents),
   };
+
+  const useAutomaticTax = process.env.STRIPE_AUTOMATIC_TAX === "true";
 
   try {
     const session = await stripe.checkout.sessions.create({
@@ -160,6 +220,7 @@ export async function POST(req: Request) {
       phone_number_collection: { enabled: true },
       billing_address_collection: "required",
       allow_promotion_codes: false,
+      ...(useAutomaticTax ? { automatic_tax: { enabled: true } } : {}),
     });
 
     if (!session.url) {

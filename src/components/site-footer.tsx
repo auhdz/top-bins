@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { site, nav } from "@/lib/site";
+import { legalFooter, nav, site } from "@/lib/site";
 
 export function SiteFooter() {
   return (
     <footer className="border-t border-white/10 bg-zinc-900 text-zinc-100">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-        <div className="grid gap-12 md:grid-cols-3 md:gap-14">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-10">
           <div>
             <Image
               src={site.logoSrc}
@@ -21,9 +21,7 @@ export function SiteFooter() {
             <p className="mt-3 max-w-sm text-sm text-zinc-400">{site.description}</p>
           </div>
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
-              Navigate
-            </p>
+            <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Navigate</p>
             <ul className="mt-3 space-y-2">
               {nav.map((item) => (
                 <li key={item.href}>
@@ -38,9 +36,22 @@ export function SiteFooter() {
             </ul>
           </div>
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
-              Reach us
-            </p>
+            <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Legal</p>
+            <ul className="mt-3 space-y-2">
+              {legalFooter.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-zinc-300 transition-colors hover:text-[oklch(0.852_0.185_96)]"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Reach us</p>
             <ul className="mt-3 space-y-2 text-sm text-zinc-300">
               <li>
                 <a href={`tel:${site.phoneTel}`} className="hover:text-white">
