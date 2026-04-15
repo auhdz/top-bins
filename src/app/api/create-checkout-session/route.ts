@@ -204,8 +204,6 @@ export async function POST(req: Request) {
     deposit_total_cents: String(depositCents),
   };
 
-  const useAutomaticTax = process.env.STRIPE_AUTOMATIC_TAX === "true";
-
   try {
     const session = await stripe.checkout.sessions.create({
       mode: "subscription",
@@ -220,7 +218,6 @@ export async function POST(req: Request) {
       phone_number_collection: { enabled: true },
       billing_address_collection: "required",
       allow_promotion_codes: false,
-      ...(useAutomaticTax ? { automatic_tax: { enabled: true } } : {}),
     });
 
     if (!session.url) {

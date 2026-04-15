@@ -33,53 +33,68 @@ From the repository root:
 ```bash
 npm install
 cp .env.example .env.local
-# Optional: set DATABASE_URL, then:
-# npx prisma migrate dev --name init
+# Edit .env.local: set DATABASE_URL, STRIPE_* , NEXT_PUBLIC_SITE_URL as needed.
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). Marketing routes include `/`, `/products`, `/faq`, `/how-it-works`, `/pricing`, `/about`, `/contact`, `/legal/privacy`, `/legal/terms`. The contact form posts to `POST /api/quote`; without `DATABASE_URL`, requests are logged to the server console only. **`/sitemap.xml`** and **`/robots.txt`** are generated for SEO.
+Open [http://localhost:3000](http://localhost:3000). Marketing routes include `/`, `/products`, `/faq`, `/how-it-works`, `/pricing`, `/about`, `/contact`, `/legal/privacy`, `/legal/terms`. The contact form posts to `POST /api/quote`. **`/sitemap.xml`** and **`/robots.txt`** are generated for SEO.
 
 ## Deploy on Vercel
 
-The Next.js app is at the **repository root** (`package.json` next to `src/`), so you **do not** need to set **Root Directory** in Vercel. Connect the repo, use the default **Framework Preset: Next.js**, and deploy.
+The Next.js app lives at the **repository root** (`package.json` next to `src/`). Connect the repo with **Framework Preset: Next.js**; leave **Root Directory** empty (or `.`). HTTPS is automatic on Vercel.
 
-If an older Vercel project still had **Root Directory** set to `web`, remove it (clear the field or set to `.`) and redeploy.
+## Stripe integration (required, do in order)
 
-Environment variables (Production / Preview) — copy `.env.example` to `.env.local`:
+Complete these before taking real payments.
 
-- **`NEXT_PUBLIC_SITE_URL`**: public site origin (not `EXT_PUBLIC_*`). Used for metadata and Stripe Checkout `success_url` / `cancel_url`. In Vercel, set this to `https://your-deployment.vercel.app` or your custom domain.
-- **`STRIPE_SECRET_KEY`**, **`STRIPE_WEBHOOK_SECRET`**: from [Stripe Dashboard](https://dashboard.stripe.com/apikeys) and **Developers → Webhooks** (endpoint URL: `https://<your-domain>/api/webhooks/stripe`). For local testing: `stripe listen --forward-to localhost:3000/api/webhooks/stripe` and paste the CLI signing secret.
-- **`DATABASE_URL`**: PostgreSQL — needed to store subscriptions and webhook idempotency.
-- **`RESEND_API_KEY`**, **`EMAIL_FROM`**: optional; sends customer + internal emails when a subscription starts. See [Resend](https://resend.com).
+1. **PostgreSQL** — Create a database (e.g. [Neon](https://neon.tech), [Supabase](https://supabase.com), RDS). You need a single **`DATABASE_URL`** connection string.
 
-**Rate limits (N-14):** `POST /api/create-checkout-session` — **20 req/min per IP**; `POST /api/quote` — **15 req/min per IP** (in-memory per instance; use Redis/Upstash if you scale to many instances).
+2. **Environment variables** — Add these four to **Vercel → Project → Settings → Environment Variables** for **Production** (and Preview if you use it). Names must match exactly; values come from your DB host and [Stripe Dashboard](https://dashboard.stripe.com):
 
-**HTTPS:** Enforced automatically on Vercel and most managed hosts; no app code required.
+   | Name | Value source |
+   |------|----------------|
+   | `DATABASE_URL` | Postgres provider |
+   | `NEXT_PUBLIC_SITE_URL` | `https://your-domain.vercel.app` or your custom domain (no trailing slash) |
+   | `STRIPE_SECRET_KEY` | Developers → API keys (`sk_test_…` or `sk_live_…`, same mode as your Dashboard) |
+   | `STRIPE_WEBHOOK_SECRET` | Created in step 4 (`whsec_…`) |
 
-**Error monitoring (N-22):** Optional tools such as [Sentry](https://sentry.io) are not bundled here. Add later if you want production stack traces and release tracking.
+   Redeploy after saving variables.
 
-**Database backups (N-23):** Enable automated backups in your Postgres provider (Neon, Supabase, RDS, etc.) and periodically verify you can restore; not something this Next.js app configures.
+3. **Run migrations** on the production database (from your machine, with `DATABASE_URL` pointing at production, or via Vercel CLI / CI):
+
+   ```bash
+   npm run db:migrate:deploy
+   ```
+
+   This script loads **`.env` and `.env.local`** so `DATABASE_URL` is picked up even if you only use `.env.local` locally.
+
+4. **Stripe webhook** — In Stripe → **Developers → Webhooks → Add endpoint**:
+
+   - **Endpoint URL:** `https://<your-domain>/api/webhooks/stripe`
+   - **Events:** `checkout.session.completed`, `customer.subscription.updated`, `customer.subscription.deleted`
+   - Copy the endpoint **Signing secret** into Vercel as `STRIPE_WEBHOOK_SECRET` and redeploy.
+
+   **Local testing:** `stripe listen --forward-to localhost:3000/api/webhooks/stripe` — use the CLI **signing secret** as `STRIPE_WEBHOOK_SECRET` in `.env.local`.
+
+5. **Verify config** — Open `https://<your-domain>/api/health`. You should see `"ok": true` and all four checks `true`. If any are `false`, fix the matching env var in Vercel and redeploy.
+
+6. **Test checkout** — Use Stripe **test mode** first: visit `/rental`, complete Checkout with [test card](https://stripe.com/docs/testing) `4242 4242 4242 4242`. Confirm the subscription appears in Stripe and (with `DATABASE_URL` set) rows in your database.
+
+**API rate limits:** `POST /api/create-checkout-session` — 20 req/min per IP; `POST /api/quote` — 15 req/min per IP (per server instance).
 
 ## Documentation only
 
 Open the files in **Documentation in this repo** in order: brief → requirements → design → user stories → page content.
 
-## Database (optional)
+## Database (local development)
 
-Point `DATABASE_URL` at PostgreSQL, then from the repo root:
+For a local Postgres, you can use:
 
 ```bash
 npx prisma migrate dev
 ```
 
-This applies `prisma/migrations` (including `QuoteRequest`, `Product`, `StripeWebhookEvent`, `RentalSubscription`). In production run:
-
-```bash
-npm run db:migrate:deploy
-```
-
-That script loads **`DATABASE_URL` from `.env` and/or `.env.local`** (Prisma’s CLI alone only auto-loads `.env`, which is why `npx prisma migrate deploy` can appear to do nothing if your URL is only in `.env.local`). Wire secrets in those files only (never commit).
+Production deploys should use `npm run db:migrate:deploy` (see Stripe steps above).
 
 ## Frontend folder structure
 
