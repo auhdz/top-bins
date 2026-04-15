@@ -21,7 +21,7 @@ export const site = {
 
 /** Header: keep minimal; logo links home */
 export const headerNav = [
-  { href: "/#how-it-works", label: "How it works" },
+  { href: "/how-it-works", label: "How it works" },
   { href: "/#checkout", label: "Pricing" },
 ] as const;
 
@@ -29,7 +29,7 @@ export const headerNav = [
 export const nav = [
   { href: "/", label: "Home" },
   { href: "/products", label: "Products" },
-  { href: "/#how-it-works", label: "How it works" },
+  { href: "/how-it-works", label: "How it works" },
   { href: "/#checkout", label: "Pricing" },
   { href: "/rental", label: "Rent bins" },
   { href: "/faq", label: "FAQ" },

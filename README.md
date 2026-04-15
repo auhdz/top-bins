@@ -73,7 +73,13 @@ Point `DATABASE_URL` at PostgreSQL, then from the repo root:
 npx prisma migrate dev
 ```
 
-This applies `prisma/migrations` (including `QuoteRequest`, `Product`, `StripeWebhookEvent`, `RentalSubscription`). In production use `npx prisma migrate deploy`. Wire secrets in `.env.local` only (never commit).
+This applies `prisma/migrations` (including `QuoteRequest`, `Product`, `StripeWebhookEvent`, `RentalSubscription`). In production run:
+
+```bash
+npm run db:migrate:deploy
+```
+
+That script loads **`DATABASE_URL` from `.env` and/or `.env.local`** (Prisma’s CLI alone only auto-loads `.env`, which is why `npx prisma migrate deploy` can appear to do nothing if your URL is only in `.env.local`). Wire secrets in those files only (never commit).
 
 ## Frontend folder structure
 

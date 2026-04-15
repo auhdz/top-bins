@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { BenefitsSection } from "@/components/marketing/benefits-section";
+import { FeaturedProductsHome } from "@/components/marketing/featured-products-home";
 import { payNowLinkProps, site } from "@/lib/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -23,6 +25,9 @@ export default function HowItWorksPage() {
           </p>
         </div>
       </section>
+
+      <BenefitsSection />
+      <FeaturedProductsHome />
 
       <section className="mx-auto max-w-3xl space-y-12 px-4 py-14 sm:px-6 sm:py-20">
         <article>

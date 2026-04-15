@@ -52,7 +52,7 @@ export function Hero() {
             <Link {...payNowLinkProps()} className={primaryCta}>
               Rent Now
             </Link>
-            <Link href="/#how-it-works" className={secondaryCta}>
+            <Link href="/how-it-works" className={secondaryCta}>
               How it works
             </Link>
           </div>
