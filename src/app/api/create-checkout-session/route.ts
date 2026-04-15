@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import Stripe from "stripe";
 
+import { getClientIp, rateLimitSlidingWindow } from "@/lib/rate-limit";
 import {
   clampQuantities,
   deliveryCentsForBins,
@@ -8,14 +8,9 @@ import {
   STANDARD_WEEKLY_CENTS,
   totalBins,
   validateQuantities,
-  type RentalQuantities,
 } from "@/lib/rental-subscription";
-
-function getStripe(): Stripe | null {
-  const key = process.env.STRIPE_SECRET_KEY?.trim();
-  if (!key) return null;
-  return new Stripe(key, { apiVersion: "2025-02-24.acacia" });
-}
+import { getStripe } from "@/lib/stripe-server";
+import type Stripe from "stripe";
 
 function getOrigin(req: Request): string {
   const fromHeader = req.headers.get("origin");
@@ -31,12 +26,29 @@ const priceIdLarge = process.env.STRIPE_PRICE_LARGE_WEEKLY?.trim();
 const productIdStandard = process.env.STRIPE_PRODUCT_STANDARD_ID?.trim();
 const productIdLarge = process.env.STRIPE_PRODUCT_LARGE_ID?.trim();
 
+const CHECKOUT_RATE_LIMIT = 20;
+const CHECKOUT_WINDOW_MS = 60_000;
+
 export async function POST(req: Request) {
   const stripe = getStripe();
   if (!stripe) {
     return NextResponse.json(
       { error: "Stripe is not configured. Add STRIPE_SECRET_KEY to your environment." },
       { status: 503 }
+    );
+  }
+
+  const ip = getClientIp(req);
+  const limited = rateLimitSlidingWindow(`checkout:${ip}`, CHECKOUT_RATE_LIMIT, CHECKOUT_WINDOW_MS);
+  if (!limited.ok) {
+    return NextResponse.json(
+      { error: "Too many checkout attempts. Try again in a moment." },
+      {
+        status: 429,
+        headers: limited.retryAfterSec
+          ? { "Retry-After": String(limited.retryAfterSec) }
+          : undefined,
+      }
     );
   }
 

@@ -46,9 +46,14 @@ The Next.js app is at the **repository root** (`package.json` next to `src/`), s
 
 If an older Vercel project still had **Root Directory** set to `web`, remove it (clear the field or set to `.`) and redeploy.
 
-Optional environment variables (Production / Preview):
+Environment variables (Production / Preview) — copy `.env.example` to `.env.local`:
 
-- **`NEXT_PUBLIC_SITE_URL`**: your live URL, e.g. `https://your-project.vercel.app` (used for metadata).
+- **`NEXT_PUBLIC_SITE_URL`**: public site origin (not `EXT_PUBLIC_*`). Used for metadata and Stripe Checkout `success_url` / `cancel_url`. In Vercel, set this to `https://your-deployment.vercel.app` or your custom domain.
+- **`STRIPE_SECRET_KEY`**, **`STRIPE_WEBHOOK_SECRET`**: from [Stripe Dashboard](https://dashboard.stripe.com/apikeys) and **Developers → Webhooks** (endpoint URL: `https://<your-domain>/api/webhooks/stripe`). For local testing: `stripe listen --forward-to localhost:3000/api/webhooks/stripe` and paste the CLI signing secret.
+- **`DATABASE_URL`**: PostgreSQL — needed to store subscriptions and webhook idempotency.
+- **`RESEND_API_KEY`**, **`EMAIL_FROM`**: optional; sends customer + internal emails when a subscription starts. See [Resend](https://resend.com).
+
+Checkout rate limit: `POST /api/create-checkout-session` allows **20 requests per minute per IP** per server instance (swap for Redis/Upstash in multi-instance production if needed).
 
 ## Documentation only
 
@@ -59,10 +64,10 @@ Open the files in **Documentation in this repo** in order: brief → requirement
 Point `DATABASE_URL` at PostgreSQL, then from the repo root:
 
 ```bash
-npx prisma migrate dev --name init
+npx prisma migrate dev
 ```
 
-This creates `QuoteRequest` (and `Product`) tables from `prisma/schema.prisma`. Wire Stripe keys in `.env.local` when you add checkout (never commit secrets).
+This applies `prisma/migrations` (including `QuoteRequest`, `Product`, `StripeWebhookEvent`, `RentalSubscription`). In production use `npx prisma migrate deploy`. Wire secrets in `.env.local` only (never commit).
 
 ## Frontend folder structure
 

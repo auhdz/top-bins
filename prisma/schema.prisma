@@ -35,3 +35,37 @@ model QuoteRequest {
   message   String?  @db.Text
   products  String?
 }
+
+/// One row per Stripe event id (evt_*) for webhook idempotency.
+model StripeWebhookEvent {
+  id         String   @id
+  type       String
+  livemode   Boolean
+  apiVersion String?
+  createdAt  DateTime @default(now())
+
+  @@index([createdAt])
+}
+
+/// Rental subscription created after successful Checkout (mode=subscription).
+model RentalSubscription {
+  id                      String   @id @default(cuid())
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+
+  stripeCustomerId        String
+  stripeSubscriptionId    String   @unique
+  stripeCheckoutSessionId String?  @unique
+
+  customerEmail           String?
+
+  standardBins            Int      @default(0)
+  largeCrates             Int      @default(0)
+  totalBins               Int      @default(0)
+
+  status                  String
+
+  @@index([stripeCustomerId])
+  @@index([customerEmail])
+  @@index([status])
+}
